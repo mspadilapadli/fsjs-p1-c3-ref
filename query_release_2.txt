@@ -1,0 +1,29 @@
+Part 1 Release 2
+--Release 2--
+
+--Tampilkan menu beserta nama-kategorinya.
+
+
+--Tampilkan menu dengan nama-kategori Tea.
+
+
+
+--Tampilkan menu dengan stock terbanyak dari nama-kategori Toast.
+
+
+
+--Tampilkan menu beserta nama-kategorinya dengan harga termahal.
+
+
+
+--Tampilkan harga rata-rata dari menu yang mempunyai nama-kategori Espresso.
+
+
+--Tampilkan harga rata-rata dari menu yang mempunyai nama-kategori Espresso.
+
+
+--Tampilkan jumlah stock dari menu yang mempunyai nama-kategori Tea
+
+
+
+--Tampilkan jumlah stock dari menu yang ditambahkan di bulan agustus dari nama-kategori Espresso.
