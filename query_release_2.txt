@@ -2,6 +2,7 @@ Part 1 Release 2
 --Release 2--
 
 --Tampilkan menu beserta nama-kategorinya.
+SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id 
 
 
 --Tampilkan menu dengan nama-kategori Tea.
