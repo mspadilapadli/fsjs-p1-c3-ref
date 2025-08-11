@@ -1,0 +1,67 @@
+Part 1 Release 1
+
+CREATE DATABASE	"HacktivDB";
+
+DROP DATABASE "HacktivDB";
+
+
+CREATE TABLE IF NOT EXISTS  "Categories" (
+	"id" SERIAL	PRIMARY KEY,
+	"name" varchar NOT NULL
+);
+
+
+
+CREATE TABLE IF NOT EXISTS  "Menu" (
+	"id" SERIAL PRIMARY KEY,
+	"name" varchar NOT NULL,
+	"categoryId" integer NOT NULL REFERENCES "Categories"("id"),
+	"stock" integer NOT NULL,
+	"price" integer NOT  NULL,
+	"createdAt" date  NOT NULL
+	
+);
+
+DROP TABLE IF EXISTS "Menu"; 
+
+INSERT INTO "Categories"("name") 
+VALUES 
+	('Expresso'),
+	('Chocolate'),
+	('Coffee'),
+	('Tea'),
+	('Cream'),
+	('Juice'),
+	('Toast'),
+	('Other');
+
+DELETE FROM  "Categories" 
+WHERE id = 2;
+
+INSERT INTO "Menu" ("name","categoryId","stock","price","createdAt")
+VALUES	
+('Double Shots', 1, 87, 48000, '2021-03-03'),
+('Americano', 1, 86, 34000, '2021-08-03'),
+('Caramel Macchiato', 1, 78, 57000, '2021-08-03'),
+('Cappucino', 1, 56, 44000, '2021-03-03'),
+('Hot Chocolate', 2, 67, 5000, '2021-03-03'),
+('Coffee', 3, 95, 39000, '2021-03-03'),
+('Caramel Java Chip', 3, 75, 53000, '2021-03-03'),
+('Mocha', 3, 75, 48000, '2021-06-03'),
+('Asian Dolce', 3, 73, 48000, '2021-06-03'),
+('Lemon Tea', 4, 67, 22000, '2021-03-03'),
+('Green Tea', 4, 46, 22000, '2021-03-03'),
+('Vanilla Cream', 5, 57, 46000, '2021-03-03'),
+('Chocolate Chip Cream', 5, 56, 53000, '2021-03-03'),
+('Green Tea Cream', 5, 68, 53000, '2021-07-03'),
+('Mango Juice', 6, 67, 39000, '2021-07-03'),
+('Guava Juice', 6, 85, 39000, '2021-07-03'),
+('Strawberry Juice', 6, 34, 39000, '2021-07-03'),
+('Crispy Chicken Toast', 7, 53, 32000, '2021-03-03'),
+('Spicy Bulgogi Toast', 7, 34, 32000, '2021-03-03'),
+('Egg and Cheese Toast', 7, 53, 22000, '2021-03-03'),
+('Cireng', 8, 44, 22000, '2021-03-03'),
+('Bakwan', 8, 45, 22000, '2021-03-03'),
+('Risol', 8, 47, 25000, '2021-03-03');
+
+DROP TABLE IF EXISTS "Menu","Categories";
