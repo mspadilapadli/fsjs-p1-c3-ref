@@ -6,6 +6,8 @@ SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menus" m 
 
 
 --Tampilkan menu dengan nama-kategori Tea.
+SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menu" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Tea'
 
 
 
