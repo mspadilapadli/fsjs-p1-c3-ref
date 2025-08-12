@@ -1,32 +1,55 @@
 Part 1 Release 2
 --Release 2--
 
---Tampilkan menu beserta nama-kategorinya.
-SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id 
+--Tampilkan menus beserta nama-kategorinya.
+SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menuss" m INNER JOIN "Categories" c ON m."categoryId" = c.id 
 
 
---Tampilkan menu dengan nama-kategori Tea.
-SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menu" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+--Tampilkan menus dengan nama-kategori Tea.
+SELECT m."name", c."name" AS "categoryName",m."price" AS "harga" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
 WHERE c."name" = 'Tea'
 
 
 
---Tampilkan menu dengan stock terbanyak dari nama-kategori Toast.
+--Tampilkan menus dengan stock terbanyak dari nama-kategori Toast.
+SELECT m."name", c."name" AS "categoryName",m."stock" AS "maxStock" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Toast' 
+AND m."stock" = (
+		SELECT max(m."stock") FROM "Menus" m 
+		INNER JOIN "Categories" c ON m."categoryId" = c."id"
+		WHERE  c."name" = 'Toast'
+)
 
 
 
---Tampilkan menu beserta nama-kategorinya dengan harga termahal.
+--Tampilkan menus beserta nama-kategorinya dengan harga termahal.
+SELECT m."name", c."name" AS "categoryName", m."price" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c."id"
+WHERE m."price" = (
+	SELECT max(m."price")
+	FROM "Menus" m
+	INNER JOIN "Categories" c ON m."categoryId" = c."id"
+)
 
 
 
---Tampilkan harga rata-rata dari menu yang mempunyai nama-kategori Espresso.
+--Tampilkan harga rata-rata dari menus yang mempunyai nama-kategori Espresso.
+SELECT m."name", c."name" AS "categoryName", m."price" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c."id"
+WHERE c."name" = 'Espresso' 
+AND m."price" >= (
+	SELECT AVG(m."price")
+	FROM "Menus" m	INNER JOIN "Categories" c ON m."categoryId" = c."id"
+	WHERE c."name" = 'Espresso' 
+)
 
 
---Tampilkan harga rata-rata dari menu yang mempunyai nama-kategori Espresso.
+--Tampilkan harga rata-rata dari menus yang mempunyai nama-kategori Espresso.
 
 
---Tampilkan jumlah stock dari menu yang mempunyai nama-kategori Tea
+--Tampilkan jumlah stock dari menus yang mempunyai nama-kategori Tea
 
 
 
---Tampilkan jumlah stock dari menu yang ditambahkan di bulan agustus dari nama-kategori Espresso.
+--Tampilkan jumlah stock dari menus yang ditambahkan di bulan agustus dari nama-kategori Espresso.
