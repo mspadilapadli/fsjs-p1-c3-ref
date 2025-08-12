@@ -59,3 +59,26 @@ FROM "Menus" m
 INNER JOIN "Categories" c ON m."categoryId" = c.id
 WHERE c."name" = 'Espresso'
 AND date_part('month' ,m."createdAt") = 8 
+
+
+--Command node app.js query-1
+--Buatlah Query SQL untuk menampilkan menu, yang mempunyai kategori Coffee dan di menu mulai bulan Mei 2021 - Juni 2021 dan data diurutkan berdasarkan tanggal
+
+
+
+
+
+--Command node app.js query-2
+--Buatlah Query SQL untuk menampilkan menu yang mempunyai jumlah stok terbanyak di database
+
+
+--Command node app.js query-3
+--Buatlah Query SQL untuk menampilkan menu dimana nama barangnya mengandung kata “tea”
+
+--Command node app.js query-4
+--Buatlah Query SQL untuk menampilkan menu dan kategorinya yang mempunyai stok terbanyak dari tanggal 2021-06-02 s/d 2021-07-09.
+
+
+--Command node app.js query-5
+--Buatlah Query SQL untuk menampilkan nama kategori yang mempunyai harga penjualan diatas 3.000.000 dan data diurutkan dari penjualan yang terbanyak.
+--Harga penjualan adalah stok x harga.
