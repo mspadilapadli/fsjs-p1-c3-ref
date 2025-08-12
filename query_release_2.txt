@@ -45,11 +45,17 @@ AND m."price" >= (
 )
 
 
---Tampilkan harga rata-rata dari menus yang mempunyai nama-kategori Espresso.
-
 
 --Tampilkan jumlah stock dari menus yang mempunyai nama-kategori Tea
+SELECT m."name", c."name" AS "categoryName",m."stock" AS "maxStock" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Tea' 
 
 
 
 --Tampilkan jumlah stock dari menus yang ditambahkan di bulan agustus dari nama-kategori Espresso.
+SELECT m."name", c."name" AS "categoryName",m."stock" AS "maxStock", m."createdAt" 
+FROM "Menus" m 
+INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Espresso'
+AND date_part('month' ,m."createdAt") = 8 
