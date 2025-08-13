@@ -96,3 +96,11 @@ AND m."stock" = (
 --Command node app.js query-5
 --Buatlah Query SQL untuk menampilkan nama kategori yang mempunyai harga penjualan diatas 3.000.000 dan data diurutkan dari penjualan yang terbanyak.
 --Harga penjualan adalah stok x harga.
+SELECT c."name" AS "category", 
+		sum(m."stock") AS "totalStock",
+		sum(m."stock" * m."price") AS "totalSales"
+FROM "Menus" m 
+INNER JOIN "Categories" c ON m."categoryId" = c."id"
+GROUP BY c."name"
+HAVING sum(m."stock" * m."price") > 3000000
+ORDER BY "totalSales" DESC;
