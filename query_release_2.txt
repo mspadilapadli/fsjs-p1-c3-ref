@@ -63,10 +63,9 @@ AND date_part('month' ,m."createdAt") = 8
 
 --Command node app.js query-1
 --Buatlah Query SQL untuk menampilkan menu, yang mempunyai kategori Coffee dan di menu mulai bulan Mei 2021 - Juni 2021 dan data diurutkan berdasarkan tanggal
-
-
-
-
+SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Coffee'
+AND date_part('month',m."createdAt") >=5 AND date_part('month',m."createdAt") <= 6
 
 --Command node app.js query-2
 --Buatlah Query SQL untuk menampilkan menu yang mempunyai jumlah stok terbanyak di database
