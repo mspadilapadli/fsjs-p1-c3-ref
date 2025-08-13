@@ -91,11 +91,9 @@ AND m."stock" = (
 		WHERE  m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
 )
 
-
-
 --Command node app.js query-5
 --Buatlah Query SQL untuk menampilkan nama kategori yang mempunyai harga penjualan diatas 3.000.000 dan data diurutkan dari penjualan yang terbanyak.
---Harga penjualan adalah stok x harga.
+--Harga penjualan adalah stok x harga,
 SELECT c."name" AS "category", 
 		sum(m."stock") AS "totalStock",
 		sum(m."stock" * m."price") AS "totalSales"
