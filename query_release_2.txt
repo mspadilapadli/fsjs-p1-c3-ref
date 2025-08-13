@@ -78,6 +78,8 @@ WHERE  m."stock" = (
 
 --Command node app.js query-3
 --Buatlah Query SQL untuk menampilkan menu dimana nama barangnya mengandung kata “tea”
+SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE m."name" ILIKE  '%tea%'
 
 --Command node app.js query-4
 --Buatlah Query SQL untuk menampilkan menu dan kategorinya yang mempunyai stok terbanyak dari tanggal 2021-06-02 s/d 2021-07-09.
