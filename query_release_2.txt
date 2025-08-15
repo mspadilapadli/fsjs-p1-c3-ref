@@ -112,6 +112,15 @@ AND m."stock" = (
 		WHERE  m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
 )
 
+//v2 
+SELECT m."name", c."name" AS "categoryName", m."stock" AS "maxStock" ,m."createdAt" 
+FROM "Menus" m 
+INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE m."createdAt" >= '2021-06-02'
+  AND m."createdAt" < '2021-07-09'
+ORDER BY m."stock" DESC
+LIMIT 1;
+
 --Command node app.js query-5
 --Buatlah Query SQL untuk menampilkan nama kategori yang mempunyai harga penjualan diatas 3.000.000 dan data diurutkan dari penjualan yang terbanyak.
 --Harga penjualan adalah stok x harga,
