@@ -5,10 +5,11 @@ const pool = new Pool({
     password: "admin65",
     host: "localhost",
     port: 5432,
-    database: "HacktivDB",
+    database: "HacktivDB_ref",
     idleTimeoutMillis: 500,
 });
 
+//test connection
 // async function testConnection() {
 //     try {
 //         console.log(await pool.query("SELECT NOW()"));
@@ -18,3 +19,5 @@ const pool = new Pool({
 // }
 
 // testConnection();
+
+module.exports = pool;
