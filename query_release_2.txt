@@ -89,6 +89,14 @@ WHERE m."stock" = (
 )
 
 
+//v2
+SELECT m."name", c."name" AS "categoryName", m."stock"
+FROM "Menus" m
+INNER JOIN "Categories" c ON m."categoryId" = c.id
+ORDER BY m."stock" DESC
+LIMIT 1;
+
+
 --Command node app.js query-3
 --Buatlah Query SQL untuk menampilkan menu dimana nama barangnya mengandung kata “tea”
 SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
