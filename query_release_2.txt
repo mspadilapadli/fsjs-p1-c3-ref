@@ -61,18 +61,31 @@ WHERE c."name" = 'Espresso'
 AND date_part('month' ,m."createdAt") = 8 
 
 
+
 --Command node app.js query-1
 --Buatlah Query SQL untuk menampilkan menu, yang mempunyai kategori Coffee dan di menu mulai bulan Mei 2021 - Juni 2021 dan data diurutkan berdasarkan tanggal
-SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
 WHERE c."name" = 'Coffee'
 AND date_part('month',m."createdAt") >=5 AND date_part('month',m."createdAt") <= 6
 
+//v2
+SELECT m."name", c."name" AS "categoryName", m."createdAt" 
+FROM "Menus" m 
+INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE c."name" = 'Coffee'
+  AND m."createdAt" >= '2021-05-01'
+  AND m."createdAt" < '2021-07-01'
+ORDER BY m."createdAt" ASC 
+
+
 --Command node app.js query-2
 --Buatlah Query SQL untuk menampilkan menu yang mempunyai jumlah stok terbanyak di database
-SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
-WHERE  m."stock" = (
+SELECT m."name", c."name" AS "categoryName",m."stock" AS "maxStock" 
+FROM "Menus" m 
+INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE m."stock" = (
 		SELECT max(m."stock") FROM "Menus" m 
-		INNER JOIN "Categories" c ON m."categoryId" = c."id"
 )
 
 
