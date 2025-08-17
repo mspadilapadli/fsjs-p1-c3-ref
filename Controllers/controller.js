@@ -35,6 +35,14 @@ class Controller {
             View.showError(error);
         }
     }
+    static async query5() {
+        try {
+            let data = await Model.Q5();
+            View.showQuery(data);
+        } catch (error) {
+            View.showError(error);
+        }
+    }
 }
 
 module.exports = Controller;
