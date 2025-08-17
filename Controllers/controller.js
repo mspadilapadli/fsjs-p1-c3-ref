@@ -19,6 +19,14 @@ class Controller {
             View.showError(error);
         }
     }
+    static async query3() {
+        try {
+            let data = await Model.Q3();
+            View.showQuery(data);
+        } catch (error) {
+            View.showError(error);
+        }
+    }
 }
 
 module.exports = Controller;
