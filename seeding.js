@@ -1,9 +1,7 @@
-const pool = require("./connection");
+const pool = require("./config");
 
 let categories = require("./data/categories.json")
-    .map((category) => {
-        return `('${category.name}')`;
-    })
+    .map(({ name }) => `('${name}')`)
     .join(",\n");
 
 let menus = require("./data/menus.json")
@@ -17,7 +15,6 @@ let queryAddCategories = `INSERT INTO "Categories"("name")
 VALUES ${categories}`;
 let queryAddMenus = `INSERT INTO "Menus" ("name","categoryId","stock","price","createdAt")
 VALUES ${menus}`;
-console.log(queryAddMenus);
 
 async function seeding() {
     try {
