@@ -5,10 +5,10 @@ let categories = require("./data/categories.json")
     .join(",\n");
 
 let menus = require("./data/menus.json")
-    .map((menu) => {
-        let { name, category, stock, price, createdAt } = menu;
-        return `('${name}',${category}, ${stock}, ${price},'${createdAt}' )`;
-    })
+    .map(
+        ({ name, category, stock, price, createdAt }) =>
+            `('${name}',${category}, ${stock}, ${price},'${createdAt}' )`
+    )
     .join(`,\n`);
 
 let queryAddCategories = `INSERT INTO "Categories"("name") 
