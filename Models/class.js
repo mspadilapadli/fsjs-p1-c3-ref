@@ -15,6 +15,22 @@ class Category {
         this.totalSales = totalSales;
     }
 }
-class Factory {}
+class Factory {
+    static showMenus(arr) {
+        let instance = arr.map((perMenu) => {
+            let { id, name, category, stock, price, createdAt } = perMenu;
+            return new Menu(id, name, category, stock, price, createdAt);
+        });
+        return instance;
+    }
+
+    static showCategory(arr) {
+        let instance = arr.map((perMenu) => {
+            let { category, totalStock, totalSales } = perMenu;
+            return new Category(category, totalStock, totalSales);
+        });
+        return instance;
+    }
+}
 
 module.exports = Factory;
