@@ -8,7 +8,13 @@ class Menu {
         this.createdAt = createdAt;
     }
 }
-
+class Category {
+    constructor(category, totalStock, totalSales) {
+        this.category = category;
+        this.totalStock = totalStock;
+        this.totalSales = totalSales;
+    }
+}
 class Factory {}
 
 module.exports = Factory;
