@@ -45,6 +45,24 @@ WHERE m."name" ILIKE  '%tea%'`;
             throw error;
         }
     }
+
+    static async Q4() {
+        try {
+            let query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
+AND m."stock" = (
+		SELECT max(m."stock") FROM "Menus" m 
+		INNER JOIN "Categories" c ON m."categoryId" = c."id"
+		WHERE  m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
+)`;
+            let data = await pool.query(query);
+            let getData = data.rows;
+            let getInstace = Factory.showMenus(getData);
+            return getInstace;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = Model;
