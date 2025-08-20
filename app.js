@@ -18,7 +18,7 @@ switch (command) {
     case "query-5":
         Controller.query5();
         break;
-
     default:
+        "Command not found";
         break;
 }
