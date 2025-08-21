@@ -10,7 +10,6 @@ AND date_part('month',m."createdAt") >=5 AND date_part('month',m."createdAt") <=
             let data = await pool.query(query);
             let getData = data.rows;
             let getInstace = Factory.showMenus(getData);
-            // console.log(getInstace);
 
             return getInstace;
         } catch (error) {
