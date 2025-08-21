@@ -17,10 +17,10 @@ class Category {
 }
 class Factory {
     static showMenus(arr) {
-        let instance = arr.map((perMenu) => {
-            let { id, name, category, stock, price, createdAt } = perMenu;
-            return new Menu(id, name, category, stock, price, createdAt);
-        });
+        let instance = arr.map(
+            ({ id, name, category, stock, price, createdAt }) =>
+                new Menu(id, name, category, stock, price, createdAt)
+        );
         return instance;
     }
 
