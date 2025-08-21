@@ -76,7 +76,6 @@ ORDER BY "totalSales" DESC;
 `;
             let data = await pool.query(query);
             let getData = data.rows;
-            // console.log(getData);
             let getInstace = Factory.showCategory(getData);
             return getInstace;
         } catch (error) {
