@@ -25,10 +25,10 @@ class Factory {
     }
 
     static showCategory(arr) {
-        let instance = arr.map((perMenu) => {
-            let { category, totalStock, totalSales } = perMenu;
-            return new Category(category, totalStock, totalSales);
-        });
+        let instance = arr.map(
+            ({ category, totalStock, totalSales }) =>
+                new Category(category, totalStock, totalSales)
+        );
         return instance;
     }
 }
