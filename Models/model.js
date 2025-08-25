@@ -18,6 +18,23 @@ ORDER BY m."createdAt" ASC `;
             throw error;
         }
     }
+
+    static async Q2() {
+        try {
+            const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
+FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE  m."stock" = (
+		SELECT max(m."stock") FROM "Menus" m 
+)`;
+
+            const { rows } = await pool.query(query);
+            const getInstanceData = Factory.createMenus(rows);
+            console.log(getInstanceData);
+            // return getInstanceData;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = Model;
