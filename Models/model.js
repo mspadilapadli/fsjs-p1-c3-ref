@@ -35,6 +35,22 @@ WHERE  m."stock" = (
             throw error;
         }
     }
+
+    static async Q3() {
+        try {
+            const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
+            FROM "Menus" m 
+            INNER JOIN "Categories" c ON m."categoryId" = c.id
+            WHERE m."name" ILIKE  '%tea%'`;
+
+            const { rows } = await pool.query(query);
+            const getInstanceData = Factory.createMenus(rows);
+
+            return getInstanceData;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = Model;
