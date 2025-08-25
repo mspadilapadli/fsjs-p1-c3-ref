@@ -81,16 +81,13 @@ ORDER BY m."createdAt" ASC
 
 --Command node app.js query-2
 --Buatlah Query SQL untuk menampilkan menu yang mempunyai jumlah stok terbanyak di database
-SELECT m."name", c."name" AS "categoryName",m."stock" AS "maxStock" 
-FROM "Menus" m 
-INNER JOIN "Categories" c ON m."categoryId" = c.id
-WHERE m."stock" = (
+SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+WHERE  m."stock" = (
 		SELECT max(m."stock") FROM "Menus" m 
 )
 
-
 //v2
-SELECT m."name", c."name" AS "categoryName", m."stock"
+SELECT m."name", c."name" AS "category", m."stock"
 FROM "Menus" m
 INNER JOIN "Categories" c ON m."categoryId" = c.id
 ORDER BY m."stock" DESC
