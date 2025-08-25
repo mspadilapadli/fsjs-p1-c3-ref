@@ -1,31 +1,31 @@
 const pool = require("./config");
 
-let categories = require("./data/categories.json")
+const categories = require("./data/categories.json")
     .map(({ name }) => `('${name}')`)
-    .join(",\n");
+    .join(`,\n`);
 
-let menus = require("./data/menus.json")
+const menus = require("./data/menus.json")
     .map(
         ({ name, category, stock, price, createdAt }) =>
-            `('${name}',${category}, ${stock}, ${price},'${createdAt}' )`
+            `('${name}', '${category}', '${stock}', '${price}', '${createdAt}')`
     )
     .join(`,\n`);
 
-let queryAddCategories = `INSERT INTO "Categories"("name") 
+const inputQCategory = `INSERT INTO "Categories"("name") 
 VALUES ${categories}`;
-let queryAddMenus = `INSERT INTO "Menus" ("name","categoryId","stock","price","createdAt")
-VALUES ${menus}`;
 
-async function seeding() {
+const inputQMenus = `INSERT INTO "Menus" ("name","categoryId","stock","price","createdAt") VALUES ${menus} `;
+
+const seeding = async () => {
     try {
-        let seedingCatergories = await pool.query(queryAddCategories);
-        if (seedingCatergories) console.log("add data category success");
+        const seedCategories = await pool.query(inputQCategory);
+        if (seedCategories) console.log("insert data category successfully");
 
-        let seedingMenus = await pool.query(queryAddMenus);
-        if (seedingMenus) console.log(`add data menus success`);
+        const seedMenus = await pool.query(inputQMenus);
+        if (seedMenus) console.log("insert data menus successfully");
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 seeding();
