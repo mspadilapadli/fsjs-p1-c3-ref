@@ -70,7 +70,7 @@ WHERE c."name" = 'Coffee'
 AND date_part('month',m."createdAt") >=5 AND date_part('month',m."createdAt") <= 6
 
 //v2
-SELECT m."name", c."name" AS "categoryName", m."createdAt" 
+SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
 FROM "Menus" m 
 INNER JOIN "Categories" c ON m."categoryId" = c.id
 WHERE c."name" = 'Coffee'
