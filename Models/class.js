@@ -1,3 +1,4 @@
+// const data = require("../data/menus.json");
 class Menu {
     constructor(id, name, category, stock, price, createdAt) {
         this.id = id;
@@ -8,6 +9,7 @@ class Menu {
         this.createdAt = createdAt;
     }
 }
+
 class Category {
     constructor(category, totalStock, totalSales) {
         this.category = category;
@@ -15,21 +17,20 @@ class Category {
         this.totalSales = totalSales;
     }
 }
+
 class Factory {
-    static showMenus(arr) {
-        let instance = arr.map(
+    static createMenus(arr) {
+        return arr.map(
             ({ id, name, category, stock, price, createdAt }) =>
                 new Menu(id, name, category, stock, price, createdAt)
         );
-        return instance;
     }
 
-    static showCategory(arr) {
-        let instance = arr.map(
+    static createCategory(arr) {
+        return arr.map(
             ({ category, totalStock, totalSales }) =>
                 new Category(category, totalStock, totalSales)
         );
-        return instance;
     }
 }
 
