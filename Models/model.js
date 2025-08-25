@@ -4,12 +4,12 @@ class Model {
     static async Q1() {
         try {
             const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
-FROM "Menus" m 
-INNER JOIN "Categories" c ON m."categoryId" = c.id
-WHERE c."name" = 'Coffee'
-  AND m."createdAt" >= '2021-05-01'
-  AND m."createdAt" < '2021-07-01'
-ORDER BY m."createdAt" ASC `;
+            FROM "Menus" m 
+            INNER JOIN "Categories" c ON m."categoryId" = c.id
+            WHERE c."name" = 'Coffee'
+              AND m."createdAt" >= '2021-05-01'
+              AND m."createdAt" < '2021-07-01'
+            ORDER BY m."createdAt" ASC `;
 
             const { rows } = await pool.query(query);
             const getInstanceData = Factory.createMenus(rows);
@@ -22,10 +22,11 @@ ORDER BY m."createdAt" ASC `;
     static async Q2() {
         try {
             const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
-FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
-WHERE  m."stock" = (
-		SELECT max(m."stock") FROM "Menus" m 
-)`;
+            FROM "Menus" m 
+            INNER JOIN "Categories" c ON m."categoryId" = c.id
+            WHERE  m."stock" = (
+                SELECT max(m."stock") FROM "Menus" m 
+                )`;
 
             const { rows } = await pool.query(query);
             const getInstanceData = Factory.createMenus(rows);
@@ -43,6 +44,32 @@ WHERE  m."stock" = (
             INNER JOIN "Categories" c ON m."categoryId" = c.id
             WHERE m."name" ILIKE  '%tea%'`;
 
+            const { rows } = await pool.query(query);
+            const getInstanceData = Factory.createMenus(rows);
+
+            return getInstanceData;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async Q4() {
+        try {
+            // const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt"
+            // FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+            // WHERE m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
+            // AND m."stock" = (
+            //     SELECT max(m."stock") FROM "Menus" m
+            //     INNER JOIN "Categories" c ON m."categoryId" = c."id"
+            //     WHERE  m."createdAt" BETWEEN '2021-06-02' AND '2021-07-09'
+            //     )`;
+
+            //with limit
+            const query = `SELECT m."id", m."name", m."price", m."stock", c."name" AS "category", m."createdAt" 
+            FROM "Menus" m INNER JOIN "Categories" c ON m."categoryId" = c.id
+            WHERE m."createdAt" >= '2021-06-02'AND m."createdAt" < '2021-07-09'
+            ORDER BY m."stock" DESC
+            LIMIT 1;`;
             const { rows } = await pool.query(query);
             const getInstanceData = Factory.createMenus(rows);
 
