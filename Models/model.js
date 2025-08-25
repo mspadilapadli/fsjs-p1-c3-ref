@@ -78,6 +78,23 @@ class Model {
             throw error;
         }
     }
+    static async Q5() {
+        try {
+            const query = `SELECT c."name" AS "category", sum(m."stock") AS "totalStock", sum(m."stock" * m."price") AS "totalSales"
+            FROM "Menus" m 
+            INNER JOIN "Categories" c ON m."categoryId" = c."id"
+            GROUP BY c."name"
+            HAVING sum(m."stock" * m."price") > 3000000
+            ORDER BY "totalSales" DESC`;
+
+            const { rows } = await pool.query(query);
+            const getInstanceData = Factory.createCategories(rows);
+
+            return getInstanceData;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = Model;

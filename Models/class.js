@@ -26,7 +26,7 @@ class Factory {
         );
     }
 
-    static createCategory(arr) {
+    static createCategories(arr) {
         return arr.map(
             ({ category, totalStock, totalSales }) =>
                 new Category(category, totalStock, totalSales)
