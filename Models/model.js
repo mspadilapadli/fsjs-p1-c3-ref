@@ -29,8 +29,8 @@ WHERE  m."stock" = (
 
             const { rows } = await pool.query(query);
             const getInstanceData = Factory.createMenus(rows);
-            console.log(getInstanceData);
-            // return getInstanceData;
+
+            return getInstanceData;
         } catch (error) {
             throw error;
         }
