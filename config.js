@@ -9,7 +9,7 @@ const pool = new Pool({
     idleTimeoutMillis: 500,
 });
 
-//test connection
+// test connection
 // async function testConnection() {
 //     try {
 //         console.log(await pool.query("SELECT NOW()"));
@@ -17,6 +17,15 @@ const pool = new Pool({
 //         console.log(error);
 //     }
 // }
+//IIFE testing
+// (async () => {
+//     try {
+//         console.log("testing                   <<<<<<<<<<<<<<<<<<<<<<<");
+//         console.log(await pool.query("SELECT NOW()"));
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })();
 
 // testConnection();
 
